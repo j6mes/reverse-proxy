@@ -16,7 +16,8 @@ stages:
 before_install:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-
+script:
+ - "echo 'hello world';"
 install:
   - docker build -t reverse-proxy .
   - docker tag reverse-proxy $DOCKER_PUB_ORG/reverse-proxy:build-$TRAVIS_BUILD_NUMBER
