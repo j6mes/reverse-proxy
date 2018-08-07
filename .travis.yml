@@ -18,9 +18,9 @@ before_install:
 
 install:
   - docker build -t reverse-proxy .
-  - docker tag fever $DOCKER_PUB_ORG/reverse-proxy:build-$TRAVIS_BUILD_NUMBER
+  - docker tag reverse-proxy $DOCKER_PUB_ORG/reverse-proxy:build-$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_PUB_ORG/reverse-proxy:build-$TRAVIS_BUILD_NUMBER
 
 after_success:
-  - docker tag fever $DOCKER_PUB_ORG/reverse-proxy:latest
+  - docker tag reverse-proxy $DOCKER_PUB_ORG/reverse-proxy:latest
   - docker push $DOCKER_PUB_ORG/reverse-proxy:latest
