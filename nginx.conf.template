@@ -32,7 +32,7 @@ http {
 	location /server-status {
         stub_status on;
         access_log   off;
-        allow ${STATUS_IP}
+        allow ${STATUS_IP};
         deny all;
 	}
  
