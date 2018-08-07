@@ -1,0 +1,26 @@
+os:
+  - linux
+
+sudo: true
+
+services:
+  - docker
+
+stages:
+    - before_install
+    - install
+    - name: after_success
+      if: branch = master
+
+before_install:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+
+install:
+  - docker build -t reverse-proxy .
+  - docker tag fever $DOCKER_PUB_ORG/reverse-proxy:build-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_PUB_ORG/reverse-proxy:build-$TRAVIS_BUILD_NUMBER
+
+after_success:
+  - docker tag fever $DOCKER_PUB_ORG/reverse-proxy:latest
+  - docker push $DOCKER_PUB_ORG/reverse-proxy:latest
