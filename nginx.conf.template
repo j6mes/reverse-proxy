@@ -33,7 +33,7 @@ http {
         stub_status on;
         access_log   off;
         allow ${STATUS_IP};
-        allow localhost;
+	allow 172.20.0.0/16;
         allow 127.0.0.1;
         deny all;
 	}
