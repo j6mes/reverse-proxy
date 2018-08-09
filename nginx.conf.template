@@ -21,7 +21,7 @@ http {
         ssl_certificate     /etc/nginx/certs/ssl.crt;
         ssl_certificate_key /etc/nginx/certs/ssl.key;
 
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
         location / {
             proxy_pass         http://docker-target;
