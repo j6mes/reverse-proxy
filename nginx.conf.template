@@ -15,7 +15,22 @@ http {
 	server_name ${SERVER_NAME};
 	return 301 https://$host$request_uri;
     }
+    
+    server {
+        listen ${LISTEN_PORT};
+	server_name www.${SERVER_NAME};
+	return 301 https://${SERVER_NAME}$request_uri;
+    }
 
+
+    server {
+        listen ${LISTEN_PORT_SSL} ssl;
+	server_name ${SERVER_NAME};
+        ssl_certificate     /etc/nginx/certs/ssl.crt;
+        ssl_certificate_key /etc/nginx/certs/ssl.key;
+        return 301 https://${SERVER_NAME}$request_uri;
+    }
+    
     server {
         listen ${LISTEN_PORT_SSL} ssl;
 	server_name ${SERVER_NAME};
