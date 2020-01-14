@@ -19,7 +19,7 @@ http {
     server {
         listen ${LISTEN_PORT};
 	server_name www.${SERVER_NAME};
-	return 301 https://$SERVER_NAME$request_uri;
+	return 301 https://${SERVER_NAME}$request_uri;
     }
     
     server {
