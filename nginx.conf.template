@@ -16,6 +16,18 @@ http {
 	return 301 https://$host$request_uri;
     }
 
+    server {
+        listen ${LISTEN_PORT};
+	server_name www.${SERVER_NAME};
+	return 301 https://$host$request_uri;
+    }
+    
+    server {
+        listen ${LISTEN_PORT_SSL};
+	server_name www.${SERVER_NAME};
+	return 301 https://$host$request_uri;
+    }
+    
 
     server {
         listen ${LISTEN_PORT_SSL} ssl;
