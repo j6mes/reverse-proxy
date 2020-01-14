@@ -25,6 +25,11 @@ http {
     server {
         listen ${LISTEN_PORT_SSL};
 	server_name www.${SERVER_NAME};
+	ssl_certificate     /etc/nginx/certs/ssl.crt;
+        ssl_certificate_key /etc/nginx/certs/ssl.key;
+
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+
 	return 301 https://$host$request_uri;
     }
     
